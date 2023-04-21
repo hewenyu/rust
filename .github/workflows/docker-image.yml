@@ -1,10 +1,19 @@
 name: Docker Image CI
 
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+  # 定时任务，在每天的5点推送天气信息到邮箱
+    - cron: '0 0 1 * *'
 
 jobs:
   build-container:
